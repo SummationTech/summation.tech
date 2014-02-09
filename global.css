@@ -8,6 +8,15 @@ body {
     background-color: #C3C3C3;
 }
 
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .center {
     margin: 0 auto 0 auto;
     width: 1000px;
@@ -24,5 +33,12 @@ body {
 
 .battleship-js-banner {
     margin: 30px 0;
-    font-size: 30px;
+    font-size: 60px;
+    text-align: center;
+}
+
+.footer {
+    background-color: #C3C3C3;
+    text-align: center;
+    padding-top: 10px;
 }
