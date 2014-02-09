@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>SummationTech</title>
+        <title>SummationTech - Home</title>
 
         <!---------- META ---------->
         <meta charset="utf-8" />
@@ -20,12 +20,34 @@
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         <!---------- STYLES ---------->
-        <style type="text/css">
-        </style>
+        <link type="text/css" rel="stylesheet" href="global.css" />
 
         <!---------- SCRIPTS ---------->
+        <script type="text/javascript">
+            function setup () {
+                var footer = document.getElementsByClassName('footer')[0], now = new Date ();
+
+                footer.innerHTML = '&copy; 2014' + (now.getFullYear() > 2014 ? ' - ' + now.getFullYear() : '') + ' SummationTech. All Rights Reserved.';
+            }
+        </script>
     </head>
-    <body>
-        <h1>SummationTech</h1>
+    <body onload="setup()">
+        <div class="center">
+            <div class="header">
+                <h1 class="logo">SummationTech</h1>
+            </div>
+            <div class="main-content">
+                <p>
+                    Welcome to SummationTech.
+                </p>
+
+                <div class="battleship-js-banner">
+                    Play BattleshipJS!
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            &copy; 2014 SummationTech. All Rights Reserved.
+        </div>
     </body>
 </html>

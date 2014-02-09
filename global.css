@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, "MS Trebuchet", sans-serif;
+    background-color: #C3C3C3;
+}
+
+.center {
+    margin: 0 auto 0 auto;
+    width: 1000px;
+    background-color: white;
+}
+
+.header {
+    padding: 10px;
+}
+
+.main-content {
+    padding: 10px;
+}
+
+.battleship-js-banner {
+    margin: 30px 0;
+    font-size: 30px;
+}
