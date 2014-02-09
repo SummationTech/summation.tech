@@ -23,11 +23,10 @@
         <link type="text/css" rel="stylesheet" href="global.css" />
 
         <!---------- SCRIPTS ---------->
+        <script type="text/javascript" src="js/ST.js"></script>
         <script type="text/javascript">
             function setup () {
-                var footer = document.getElementsByClassName('footer')[0], now = new Date ();
-
-                footer.innerHTML = '&copy; 2014' + (now.getFullYear() > 2014 ? ' - ' + now.getFullYear() : '') + ' SummationTech. All Rights Reserved.';
+                var footer = document.getElementsByClassName('footer')[0].innerHTML = STJS.Util.getCopyrightText(new Date().getFullYear());
             }
         </script>
     </head>
