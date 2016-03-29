@@ -1,0 +1,42 @@
+// Colors
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
+$red: rgb(220, 80, 80);
+$blue: rgb(50, 100, 200);
+$base-color: lighten($black, 30%);
+$base-background-color: lighten($black, 95%);
+
+// Font weights
+$light: 100;
+$regular: 400;
+$bold: 600;
+
+// Font Imports
+@font-face {
+    font-family: 'Open Sans Light';
+    src: font-files('OpenSans-Light.woff', 'OpenSans-Light.ttf', 'OpenSans-Light.eot');
+}
+@font-face {
+    font-family: 'Open Sans Regular';
+    src: font-files('OpenSans-Regular.woff', 'OpenSans-Regular.ttf', 'OpenSans-Regular.eot');
+}
+@font-face {
+    font-family: 'Open Sans Semibold';
+    src: font-files('OpenSans-Semibold.woff', 'OpenSans-Semibold.ttf', 'OpenSans-Semibold.eot');
+}
+
+// Base Font
+$backup-font-family: Arial, sans-serif;
+$base-font-family: 'Open Sans Regular', $backup-font-family;
+$base-header-font-family: 'Open Sans Semibold', $backup-font-family;
+$base-font-size: 13px;
+$base-font-weight: $regular;
+$base-line-height: 1.4;
+
+// Fixed Font
+$fixed-font-family: monospace;
+$fixed-font-size: 85%;
+$fixed-line-height: $base-line-height;
+
+// Headings
+$header-font-weight: $bold;

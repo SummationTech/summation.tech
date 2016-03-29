@@ -1,0 +1,58 @@
+header {
+    background-color: $base-background-color;
+    box-shadow: 0 1px 5px lighten($black, 60%);
+    box-sizing: border-box;
+    height: 140px;
+    line-height: 120px;
+    padding: 10px 30px;
+    position: fixed;
+    top: 0;
+    transition: height 0.5s;
+    width: 100%;
+
+    .logo {
+        float: left;
+        font-size: $base-font-size * 5;
+        text-decoration: none;
+        transition: font 0.5s, line-height 0.5s;
+    }
+
+    nav ul {
+        float: right;
+        transition: line-height 0.5s;
+    }
+
+    nav ul li {
+        color: lighten($black, 60%);
+        display: inline-block;
+        float: left;
+        font-size: 17px;
+        list-style-type: none;
+        margin-right: 25px;
+
+        &.selected {
+            color: $red;
+            font-weight: $bold;
+        }
+
+        // Add a dot between every li.
+        &:not(:last-child):after {
+            content: '\00B7';
+            margin-left: 25px;
+        }
+        a:hover {
+            font-weight: bolder;
+        }
+    }
+}
+
+.page-scrolled {
+    header {
+        height: 80px;
+        line-height: 60px;
+
+        .logo {
+            font-size: $base-font-size * 2.5;
+        }
+    }
+}
