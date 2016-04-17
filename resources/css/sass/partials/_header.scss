@@ -7,6 +7,8 @@ header {
     padding: 10px 30px;
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     transition: height 0.5s;
     width: 100%;
 
@@ -28,31 +30,90 @@ header {
         float: left;
         font-size: 17px;
         list-style-type: none;
-        margin-right: 25px;
+        letter-spacing: 2px;
+        margin-right: 15px;
+        text-align: center;
 
-        &.selected {
-            color: $red;
-            font-weight: $bold;
+        // Link styles
+        a {
+            text-align: center;
+            padding: 10px;
+
+            &:hover {
+                font-weight: $bold;
+                background-color: lighten($black, 85%);
+            }
+        }
+
+        &.selected a {
+             color: $red;
+             font-weight: $bold;
+        }
+
+        &:not(.selected) a:hover {
+            letter-spacing: 1.3px;
         }
 
         // Add a dot between every li.
         &:not(:last-child):after {
             content: '\00B7';
-            margin-left: 25px;
-        }
-        a:hover {
-            font-weight: bolder;
+            font-size: 20px;
+            margin-left: 15px;
         }
     }
-}
 
-.page-scrolled {
-    header {
+    @include respond-to(medium-screens) {
         height: 80px;
         line-height: 60px;
 
         .logo {
             font-size: $base-font-size * 2.5;
+        }
+    }
+
+    @include respond-to(small-and-handheld-screens) {
+        line-height: 60px;
+        padding: 10px;
+        text-align: center;
+
+        .logo {
+            font-size: $base-font-size * 2.5;
+            text-align: center;
+            float: none;
+        }
+
+        a {
+            padding: 6px;
+        }
+
+        nav {
+            display: inline-block;
+        }
+
+        nav ul {
+            float: none;
+            clear: both;
+        }
+    }
+
+    @include respond-to(handhelds) {
+        nav ul li{
+            margin-right: 0;
+
+            &:not(:last-child):after {
+                margin-left: 0;
+            }
+        }
+    }
+
+    @include respond-to(wide-screens) {
+        .page-scrolled & {
+            height: 80px;
+            line-height: 60px;
+
+            .logo {
+                font-size: $base-font-size * 2.5;
+            }
         }
     }
 }

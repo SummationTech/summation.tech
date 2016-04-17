@@ -19,12 +19,17 @@ html(lang=en)
 
     body
         header
+            - function getHref(page, href) { return page === pageTitle ? 'javascript:void(0);' : href; }
+            - function getClass(page) { return page === pageTitle ? 'selected' : ''; }
             h1.logo
-                a(href='/') SummationTech
+                a(href=getHref('Home', 'index.html')) SummationTech
             nav: ul
-                li: a(href='products.html') Products
-                li: a(href='about.html') About
-                li: a(href='contact.html') Contact
+                li(class=getClass('Products'))
+                    a(href=getHref('Products', 'products.html')) Products
+                li(class=getClass('About'))
+                    a(href=getHref('About', 'about.html')) About
+                li(class=getClass('Contact'))
+                    a(href=getHref('Contact', 'contact.html')) Contact
 
         .content
             block content
