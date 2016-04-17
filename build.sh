@@ -12,11 +12,8 @@ echo "\n===== Creating Builds Folder ====="
 rm -rf builds
 mkdir builds
 
-echo "\nCopying HTML"
-for f in *.html
-do
-    cp -v $f builds/${f%.html}.html
-done
+echo "\n=== Compiling Pug ==="
+pug . -o builds
 
 echo "\n=== Copying Resources ==="
 mkdir builds/resources

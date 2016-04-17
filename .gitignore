@@ -1,2 +1,5 @@
 builds
 resources/css/app.css
+*.sass-cache
+*.sublime-*
+*.html
