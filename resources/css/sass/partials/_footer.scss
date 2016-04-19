@@ -1,5 +1,11 @@
 footer {
+    background-color: lighten($black, 35%);
     color: lighten($black, 70%);
-    margin: 50px 25px 25px;
+    padding: 25px;
     text-align: right;
+    font-size: $base-font-size * 0.8;
+
+    @include respond-to(handhelds) {
+        text-align: center;
+    }
 }

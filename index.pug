@@ -1,11 +1,20 @@
 extends ./layout.pug
 
 block content
-    .banner
+    //.banner
         h1 Experience Incredible Apps
         h2 from SummationTech.
         p We build engaging apps with compelling experiences on all your devices.
-    .feature
-        .device-container
-            img(class='iphone', src='resources/images/welcome-screenshot-small-iphone5s.png', alt='PrayNow on iPhone 5s')
-            img(class='ipad', src='resources/images/gameplay-screenshot-ipad.png', alt='PrayNow on iPad')
+    .feature.clear-wrapper
+        .device-screenshot
+            img(class='iphone', width=240 src='resources/images/pray-app-main-screen-iphone5s-tilt.png', alt='PrayNow on iPhone 5s')
+            // img(class='ipad', src='resources/images/gameplay-screenshot-ipad.png', alt='PrayNow on iPad')
+        .feature-content
+            h1 Pray
+            p.
+                <strong>Are you often busy and forget to pray during the day?</strong>
+                If so, Pray is for you. Pray's simple UI allows you to easily set periodic notifications to remind you to pray.
+
+            .app-store-learn-more
+                img(class='app-store-badge', height=70, src='resources/images/app-store-badge.png', alt='Download on the Apple App Store')
+                p Learn More

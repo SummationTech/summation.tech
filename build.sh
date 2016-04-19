@@ -27,5 +27,6 @@ cp -vr resources/js builds/resources/js
 echo "\nCopying CSS"
 mkdir builds/resources/css
 cp -v resources/css/app.css builds/resources/css/app.css
+cp -vr resources/css/fonts builds/resources/css/fonts
 
 echo "\nBuild Complete!\n"

@@ -27,7 +27,8 @@ $bold: 600;
 
 // Base Font
 $backup-font-family: Arial, sans-serif;
-$base-font-family: 'Open Sans Regular', $backup-font-family;
+$base-font-family: 'Open Sans Light', $backup-font-family;
+$base-bold-font-family: 'Open Sans Semibold', $backup-font-family;
 $base-header-font-family: 'Open Sans Semibold', $backup-font-family;
 $base-font-size: 13px;
 $base-font-weight: $regular;

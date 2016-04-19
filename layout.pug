@@ -5,7 +5,7 @@ html(lang=en)
         // Default pageTitle
         - var pageTitle = 'Home';
     head
-        title #{pageTitle} - SummationTech
+        title #{pageTitle} - Summation.Tech
 
         // Meta
         meta(charset='utf-8')
@@ -22,15 +22,14 @@ html(lang=en)
     body
         header
             - function getHref(page, href) { return page === pageTitle ? 'javascript:void(0);' : href; }
-            - function getClass(page) { return page === pageTitle ? 'selected' : ''; }
             h1.logo
-                a(href=getHref('Home', 'index.html')) SummationTech
+                a(href=getHref('Home', 'index.html')) Summation.Tech
             nav: ul
-                li(class=getClass('Pray'))
+                li(class='active')
                     a(href=getHref('Pray', 'pray.html')) Pray App
-                li(class=getClass('About'))
+                li
                     a(href=getHref('About', 'about.html')) About
-                li(class=getClass('Contact'))
+                li
                     a(href=getHref('Contact', 'contact.html')) Contact
 
         .content

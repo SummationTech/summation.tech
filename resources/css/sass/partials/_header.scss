@@ -1,6 +1,6 @@
 header {
     background-color: $base-background-color;
-    box-shadow: 0 1px 5px lighten($black, 60%);
+    box-shadow: 0 1px 7px lighten($black, 60%);
     box-sizing: border-box;
     height: 140px;
     line-height: 120px;
@@ -11,6 +11,7 @@ header {
     right: 0;
     transition: height 0.5s;
     width: 100%;
+    z-index: 2;
 
     .logo {
         float: left;
@@ -31,7 +32,6 @@ header {
         font-size: 17px;
         list-style-type: none;
         letter-spacing: 2px;
-        margin-right: 15px;
         text-align: center;
         transition: margin 0.5s;
 
@@ -41,26 +41,27 @@ header {
             padding: 10px;
 
             &:hover {
-                font-weight: $bold;
+                font-family: $base-bold-font-family;
             }
         }
 
         &.selected a, a:hover {
              color: $red;
-             font-weight: $bold;
+             font-family: $base-bold-font-family;
+             letter-spacing: 1.4px;
              background-color: lighten($black, 85%);
         }
 
-        &:not(.selected) a:hover {
-            letter-spacing: 1.3px;
-        }
-
         // Add a dot between every li.
-        &:not(:last-child):after {
-            content: '\00B7';
-            font-size: 20px;
-            margin-left: 15px;
-            transition: margin 0.5s;
+        &:not(:last-child) {
+            margin-right: 15px;
+
+            &:after {
+                content: '\00B7';
+                font-size: 20px;
+                margin-left: 15px;
+                transition: margin 0.5s;
+            }
         }
     }
 
@@ -90,23 +91,25 @@ header {
             display: inline-block;
         }
 
+        // Reduce the space between the menu items
         nav ul {
             float: none;
             clear: both;
 
             li a {
-                 padding: 3px;
+                padding: 5px;
             }
         }
     }
 
     @include respond-to(handhelds) {
-        // Reduce the space between the menu items
-        nav ul li{
-            margin-right: 5px;
+        nav ul li {
+            &:not(:last-child) {
+                margin-right: 5px;
 
-            &:not(:last-child):after {
-                margin-left: 5px;
+                &:after {
+                    margin-left: 5px;
+                }
             }
         }
     }

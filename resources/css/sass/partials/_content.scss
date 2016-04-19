@@ -1,58 +1,97 @@
 .content {
-    margin-top: 200px;
+    box-shadow: 0 1px 7px $black;
+    background-color: $white; // lighten($black, 17%);
     width: 100%;
-    transition: margin 0.5s;
+    position: relative;
+    z-index: 1;
+    transition: padding 0.5s;
+    padding: 200px 0 50px 0;
 
     .banner {
         text-align: center;
+        padding: 0 20px;
 
         h1 {
             color: $blue;
-            font-size: $base-font-size * 4.5;
+            font-size: $base-font-size * 4.1;
+            transition: font 0.5s;
         }
+
         h2 {
             font-size: $base-font-size * 1.7;
             margin: 10px auto;
+            transition: font 0.5s;
         }
+
         p {
             font-size: $base-font-size * 1.4;
             margin: 30px auto;
+            transition: font 0.5s, margin 0.5s;
         }
     }
 
     .feature {
-        margin: 100px 0;
+        width: 100%;
+        // padding: 70px 0;
+        // background-color: lighten($black, 17%);
+        color: lighten($black, 33%);
+        position: relative;
 
-        .device-container {
-            margin: 10px auto;
-            width: 700px;
+        .device-screenshot {
+            margin: 0 75px;
+            float: left;
+        }
 
-            .iphone {
-                bottom: 0;
-                left: 100px;
-                position: relative;
-                z-index: 1000;
-            }
-            .ipad {
-                bottom: 0;
-                left: 10px;
-                position: relative;
-                z-index: 999;
-            }
+        .feature-content {
+             float: left;
+             position: absolute;
+             top: 50%;
+             transform: translateY(-50%);
+             margin: 0 75px 0 390px;
+
+             h1 {
+                 font-size: $base-font-size * 3.7;
+             }
+
+             p {
+                  font-size: $base-font-size * 1.4;
+                  margin: 20px 0;
+             }
         }
     }
 
     @include respond-to(medium-screens) {
-        margin-top: 140px;
+        padding-top: 140px;
+
+        .banner h1 {
+             font-size: $base-font-size * 3.5;
+        }
     }
 
     @include respond-to(small-and-handheld-screens) {
-         margin-top: 140px;
+         padding-top: 140px;
+
+        .banner {
+            padding: 0 10px;
+
+            h1 {
+                font-size: $base-font-size * 3.0;
+            }
+
+            h2 {
+                font-size: $base-font-size * 1.4;
+            }
+
+            p {
+                margin: 25px auto;
+                font-size: $base-font-size * 1.2;
+            }
+        }
     }
 }
 
 .page-scrolled {
     .content {
-        margin-top: 140px;
+        padding-top: 140px;
     }
 }
