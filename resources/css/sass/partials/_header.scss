@@ -45,7 +45,7 @@ header {
             }
         }
 
-        &.selected a, a:hover {
+        &.active a, a:hover {
              color: $red;
              font-family: $base-bold-font-family;
              letter-spacing: 1.4px;

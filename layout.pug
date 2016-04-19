@@ -20,17 +20,18 @@ html(lang=en)
         script(type='text/javascript', src='resources/js/app.js')
 
     body
+        #top
         header
-            - function getHref(page, href) { return page === pageTitle ? 'javascript:void(0);' : href; }
+            - function getHref(anchor) { return !anchor ? '#' : '#' + anchor; }
             h1.logo
-                a(href=getHref('Home', 'index.html')) Summation.Tech
+                a(href=getHref()) Summation.Tech
             nav: ul
-                li(class='active')
-                    a(href=getHref('Pray', 'pray.html')) Pray App
-                li
-                    a(href=getHref('About', 'about.html')) About
-                li
-                    a(href=getHref('Contact', 'contact.html')) Contact
+                li(class='active nav-button pray')
+                    a(href=getHref('top')) Pray App
+                li(class='nav-button about')
+                    a(href=getHref('about')) About
+                li(class='nav-button contact')
+                    a(href=getHref('contact')) Contact
 
         .content
             block content
