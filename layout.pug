@@ -2,6 +2,8 @@ doctype html
 
 html(lang=en)
     block vars
+        // Default pageTitle
+        - var pageTitle = 'Home';
     head
         title #{pageTitle} - SummationTech
 
@@ -24,8 +26,8 @@ html(lang=en)
             h1.logo
                 a(href=getHref('Home', 'index.html')) SummationTech
             nav: ul
-                li(class=getClass('Products'))
-                    a(href=getHref('Products', 'products.html')) Products
+                li(class=getClass('Pray'))
+                    a(href=getHref('Pray', 'pray.html')) Pray App
                 li(class=getClass('About'))
                     a(href=getHref('About', 'about.html')) About
                 li(class=getClass('Contact'))

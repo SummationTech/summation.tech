@@ -1,6 +1,7 @@
 .content {
     margin-top: 200px;
     width: 100%;
+    transition: margin 0.5s;
 
     .banner {
         text-align: center;
@@ -40,10 +41,18 @@
             }
         }
     }
+
+    @include respond-to(medium-screens) {
+        margin-top: 140px;
+    }
+
+    @include respond-to(small-and-handheld-screens) {
+         margin-top: 140px;
+    }
 }
 
 .page-scrolled {
     .content {
-        margin-top: 150px;
+        margin-top: 140px;
     }
 }
