@@ -22,19 +22,21 @@ html(lang=en)
     body
         #top
         header
-            - function getHref(anchor) { return !anchor ? '#' : '#' + anchor; }
-            h1.logo
-                a(href=getHref()) Summation.Tech
-            nav: ul
-                li(class='active nav-button pray')
-                    a(href=getHref('top')) Pray App
-                li(class='nav-button about')
-                    a(href=getHref('about')) About
-                li(class='nav-button contact')
-                    a(href=getHref('contact')) Contact
+            .content-wrapper
+                - function getHref(anchor) { return !anchor ? '#' : '#' + anchor; }
+                h1.logo
+                    a(href=getHref()) Summation.Tech
+                nav: ul
+                    li(class='active nav-button pray')
+                        a(href=getHref('top')) Pray App
+                    li(class='nav-button about')
+                        a(href=getHref('about')) About
+                    li(class='nav-button contact')
+                        a(href=getHref('contact')) Contact
 
         .content
-            block content
+            .content-wrapper
+                block content
 
         footer
             p Copyright &copy; <span class="copyright-year">2016</span> SummationTech. All Rights Reserved.

@@ -34,7 +34,6 @@
         width: 100%;
         // padding: 70px 0;
         // background-color: lighten($black, 17%);
-        color: lighten($black, 33%);
         position: relative;
 
         .device-screenshot {
@@ -43,20 +42,21 @@
         }
 
         .feature-content {
-             float: left;
-             position: absolute;
-             top: 50%;
-             transform: translateY(-50%);
-             margin: 0 75px 0 390px;
+            float: left;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 75px 0 390px;
 
-             h1 {
-                 font-size: $base-font-size * 3.7;
-             }
+            h1 {
+                font-size: $base-font-size * 3.7;
+            }
 
-             p {
-                  font-size: $base-font-size * 1.4;
-                  margin: 20px 0;
-             }
+            p {
+                font-size: $base-font-size * 1.4;
+                margin: 20px 0;
+                color: lighten($black, 33%);
+            }
         }
     }
 

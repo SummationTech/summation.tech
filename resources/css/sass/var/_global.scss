@@ -16,10 +16,12 @@ $bold: 600;
     font-family: 'Open Sans Light';
     src: font-files('OpenSans-Light.woff', 'OpenSans-Light.ttf', 'OpenSans-Light.eot');
 }
+
 @font-face {
     font-family: 'Open Sans Regular';
     src: font-files('OpenSans-Regular.woff', 'OpenSans-Regular.ttf', 'OpenSans-Regular.eot');
 }
+
 @font-face {
     font-family: 'Open Sans Semibold';
     src: font-files('OpenSans-Semibold.woff', 'OpenSans-Semibold.ttf', 'OpenSans-Semibold.eot');
@@ -41,3 +43,9 @@ $fixed-line-height: $base-line-height;
 
 // Headings
 $header-font-weight: $bold;
+
+// Width Variables 
+$handheld-width: 400px;
+$small-screen-width: 700px;
+$large-screen-width: 1000px;
+$max-content-width: 1200px;

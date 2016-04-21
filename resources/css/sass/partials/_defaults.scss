@@ -42,3 +42,8 @@ p {
     height: 0;
     clear: both;
 }
+
+.content-wrapper {
+    max-width: $max-content-width;
+    margin: 0 auto;
+}
