@@ -13,7 +13,7 @@ $.fn.isOnFullyScreen = function() {
     var win = $(window);
 
     var viewport = {
-        top: win.scrollTop(),
+        top: win.scrollTop() + $('header').height(),
         left: win.scrollLeft(),
     };
     viewport.right = viewport.left + win.width();
