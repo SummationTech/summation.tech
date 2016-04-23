@@ -2,10 +2,16 @@ footer {
     background-color: lighten($black, 35%);
     color: lighten($black, 70%);
     padding: 25px;
-    text-align: right;
+    text-align: center;
     font-size: $base-font-size * 0.8;
 
-    @include respond-to(handhelds) {
-        text-align: center;
+    .social-icon {
+        transition: color 0.5s;
+        padding: 10px;
+        font-size: $base-font-size * 1.5;
+
+        &:hover {
+            color: $white;
+        }
     }
 }

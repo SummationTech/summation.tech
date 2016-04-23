@@ -42,11 +42,10 @@ header {
             padding: 10px;
         }
 
-        &.active a, a:hover {
+        &.active a {
              color: $red;
              font-family: $base-bold-font-family;
              letter-spacing: 1.4px;
-             background-color: lighten($black, 85%);
         }
 
         // Add a dot between every li.
@@ -101,11 +100,15 @@ header {
 
     @include respond-to(handhelds) {
         nav ul li {
+            a {
+                padding: 7px 3px;
+            }
+
             &:not(:last-child) {
-                margin-right: 5px;
+                margin-right: 0;
 
                 &:after {
-                    margin-left: 5px;
+                    margin-left: 0;
                 }
             }
         }

@@ -1,47 +1,26 @@
 .content {
     box-shadow: 0 1px 7px $black;
-    background-color: $white; // lighten($black, 17%);
+    background-color: $white;
     width: 100%;
     position: relative;
     z-index: 1;
     transition: padding 0.5s;
-    padding: 200px 0 50px 0;
+    padding: 200px 0 0 0;
 
-    .banner {
-        text-align: center;
-        padding: 0 20px;
-
-        h1 {
-            color: $blue;
-            font-size: $base-font-size * 4.1;
-            transition: font 0.5s;
-        }
-
-        h2 {
-            font-size: $base-font-size * 1.7;
-            margin: 10px auto;
-            transition: font 0.5s;
-        }
-
-        p {
-            font-size: $base-font-size * 1.4;
-            margin: 30px auto;
-            transition: font 0.5s, margin 0.5s;
-        }
-    }
-
-    .feature {
+    #pray {
         width: 100%;
-        // padding: 70px 0;
-        // background-color: lighten($black, 17%);
         position: relative;
+        padding-bottom: 75px;
 
         .device-screenshot {
             margin: 0 75px;
-            float: left;
+
+            img {
+                width: 240px;
+            }
         }
 
-        .feature-content {
+        .pray-content {
             float: left;
             position: absolute;
             top: 50%;
@@ -58,35 +37,136 @@
                 color: lighten($black, 33%);
             }
         }
+
+        @include respond-to(small-and-handheld-screens) {
+            .device-screenshot {
+                margin: 0 auto;
+                width: 200px;
+
+                img {
+                    width: 200px;
+                }
+            }
+
+            .pray-content {
+                float: none;
+                position: relative;
+                top: 0;
+                transform: none;
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+            }
+        }
     }
 
-    @include respond-to(medium-screens) {
+    #features {
+        padding: 50px 0;
+        background-color: lighten($black, 20%);
+        color: lighten($black, 90%);
+
+        .feature-wrapper {
+            width: 875px;
+            margin: 0 auto;
+            transition: all 0.5s;
+
+            .feature {
+                float: left;
+                margin-right: 20px;
+                padding-right: 20px;
+                text-align: center;
+                width: 265px;
+                transition: all 0.5s;
+
+                &:last-child {
+                    margin-right: 0;
+                    padding-right: 0;
+                }
+
+                span.feature-icon {
+                    font-size: $base-font-size * 3;
+                    margin: 25px 0 35px 0;
+                    display: block;
+                }
+
+                h3 {
+                    font-size: $base-font-size * 1.2;
+
+                    &.coming-soon:after {
+                        content: 'Coming Soon';
+                        margin-left: 10px;
+                        border: 1px solid $green;
+                        border-radius: 3px;
+                        padding: 1px 4px;
+                        background-color: $black;
+                        font-size: $base-font-size;
+                    }
+                }
+                
+                p {
+                    font-size: $base-font-size * 1.1;
+                    padding-top: 4px;
+                }
+            }
+        }
+
+        @include respond-to(medium-screens) {
+            .feature-wrapper {
+                width: 600px;
+
+                .feature:first-child {
+                    margin: 0 auto;
+                    padding: 20px 0;
+                    float: none;
+                }
+
+                .feature:last-child {
+                    padding-right: 0;
+                }
+            }
+        }
+
+        @include respond-to(small-and-handheld-screens) {
+            .feature-wrapper {
+                width: 265px;
+
+                .feature {
+                    float: none;
+                    padding: 20px 0;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    #features h1, #inspiration h1 {
+        width: 100%;
+        text-align: center;
+        font-size: $base-font-size * 1.5;
+        font-family: $base-font-family;
+        margin-bottom: 20px;
+    }
+
+    #inspiration {
+        padding: 50px;
+        background-color: lighten($black, 80%);
+        color: lighten($black, 12%);
+
+        // inspired by https://css-tricks.com/examples/Blockquotes/
+        blockquote {
+            margin: 20px 0 10px 40px;
+            padding: 10px 0 10px 15px;
+            border-left: 3px solid lighten($black, 10%);
+            transition: margin 0.5s;
+
+            @include respond-to(small-and-handheld-screens) {
+                margin-left: 20px;
+            }
+        }
+    }
+
+    @include respond-to(medium-and-smaller-screens) {
         padding-top: 140px;
-
-        .banner h1 {
-             font-size: $base-font-size * 3.5;
-        }
-    }
-
-    @include respond-to(small-and-handheld-screens) {
-         padding-top: 140px;
-
-        .banner {
-            padding: 0 10px;
-
-            h1 {
-                font-size: $base-font-size * 3.0;
-            }
-
-            h2 {
-                font-size: $base-font-size * 1.4;
-            }
-
-            p {
-                margin: 25px auto;
-                font-size: $base-font-size * 1.2;
-            }
-        }
     }
 }
 

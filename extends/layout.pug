@@ -10,7 +10,7 @@ html(lang=en)
         // Meta
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        meta(name='description', content='Learn about SummationTech\'s incredible apps with compelling experiences on all your devices.')
+        meta(name='description', content='Learn about Summation.Tech\'s incredible apps with compelling experiences on all your devices.')
 
         // Stylesheet
         link(rel='stylesheet', href='resources/css/app.css' media='screen, projection', type='text/css')
@@ -25,18 +25,22 @@ html(lang=en)
             .content-wrapper
                 - function getHref(anchor) { return !anchor ? '#' : '#' + anchor; }
                 h1.logo
-                    a(href=getHref()) Summation.Tech
+                    a(href=getHref('top')) Summation.Tech
                 nav: ul
                     li(class='active nav-button pray')
                         a(href=getHref('top')) Pray App
-                    li(class='nav-button about')
-                        a(href=getHref('about')) About
-                    li(class='nav-button contact')
-                        a(href=getHref('contact')) Contact
+                    li(class='nav-button features')
+                        a(href=getHref('features')) Features
+                    li(class='nav-button inspiration')
+                        a(href=getHref('inspiration')) Inspiration
 
         .content
             .content-wrapper
                 block content
 
         footer
-            p Copyright &copy; <span class="copyright-year">2016</span> SummationTech. All Rights Reserved.
+            .content-wrapper
+                .social-media
+                    a.social-icon.fa.fa-facebook(href='http://www.facebook.com')
+                    a.social-icon.fa.fa-twitter(href='http://www.twitter.com')
+                p Copyright &copy; <span class='copyright-year'>2016</span> Summation.Tech. All Rights Reserved.

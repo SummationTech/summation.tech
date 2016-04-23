@@ -1,24 +1,42 @@
-extends ./layout.pug
+extends ./extends/layout.pug
 
 block content
-    #pray.feature.clear-wrapper
+    #pray.clear-wrapper
         .device-screenshot
-            img(class='iphone', width=240 src='resources/images/pray-app-main-screen-iphone5s-tilt.png', alt='PrayNow on iPhone 5s')
+            img(class='iphone', src='resources/images/pray-app-main-screen-iphone5s-tilt.png', alt='PrayNow on iPhone 5s')
             // img(class='ipad', src='resources/images/gameplay-screenshot-ipad.png', alt='PrayNow on iPad')
-        .feature-content
+        .pray-content
             h1 Pray
             p.
                 <strong>Are you often busy and forget to pray during the day?</strong>
-                If so, Pray is for you. Pray's simple UI allows you to easily set periodic notifications to remind you to pray.
+                If so, Pray is for you. Pray lets you easily set periodic notifications to remind you to pray.
 
             .app-store-learn-more
-                img(class='app-store-badge', height=70, src='resources/images/app-store-badge.png', alt='Download on the Apple App Store')
-                p Learn More
+                // TODO: fix URL
+                a(href='https://itunes.apple.com')
+                    img(class='app-store-badge', height=70, src='resources/images/app-store-badge.png', alt='Download on the Apple App Store')
+                p: a(href='#features') Learn More
 
-    #about.clear-wrapper
-        p.
-            At SummationTech, we believe in the power of prayer.
+    #features.clear-wrapper
+        h1 Features
+        .feature-wrapper
+            .feature
+                span.feature-icon.fa.fa-bell
+                h3 Prayer Notifications
+                p Pray lets you choose how often to receive a prayer notification and allows you to select the what times of the day of the day during which you want to receive prayer notifications.
+            .feature
+                span.feature-icon.fa.fa-list
+                h3.coming-soon Prayer Categories
+                p Don't know what to pray about? Prayer notifications have a category of prayer such as growth, family, world leaders, friends, etc. which help lead you in the right direction.
+            .feature
+                span.feature-icon.fa.fa-arrow-circle-up
+                h3.coming-soon Prayer Requests
+                p Pray keeps track of prayer requests and will deliver notifications to pray for each one throughout the day.
 
-    #contact.clear-wrapper
-        p.
-            Facebook
+    #inspiration.clear-wrapper
+        h1 Inspiration
+        p The story of Pray started with Facebook post by Kimberly K. who said
+
+        blockquote "...if we prayed, on the hour, every hour, like we check our FB feed....hearts could be changed. I for one will make this my new habit".
+
+        p When Sumner, founder of Summation.Tech and creator of Pray, saw that post, he was inspired to create an app to do just that: send prayer reminders every hour.

@@ -9,12 +9,12 @@ String.prototype.format = function () {
 };
 
 // http://stackoverflow.com/questions/20644029/checking-if-a-div-is-visible-within-viewport-using-jquery
-$.fn.isOnScreen = function(){
+$.fn.isOnFullyScreen = function() {
     var win = $(window);
 
     var viewport = {
-        top : win.scrollTop(),
-        left : win.scrollLeft()
+        top: win.scrollTop(),
+        left: win.scrollLeft(),
     };
     viewport.right = viewport.left + win.width();
     viewport.bottom = viewport.top + win.height();
@@ -23,18 +23,28 @@ $.fn.isOnScreen = function(){
     bounds.right = bounds.left + this.outerWidth();
     bounds.bottom = bounds.top + this.outerHeight();
 
-    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+    return (bounds.right <= viewport.right && bounds.left >= viewport.left && bounds.top >= viewport.top && bounds.bottom <= viewport.bottom);
 };
 
 var STW = {
     activeItem: 'pray',
-    setActiveNavItem: function(name) {
+    setActiveNavItem: function (name) {
         if (this.activeItem === name) { return; }
 
         this.activeItem = name;
-        console.log(name);
         $('.nav-button').removeClass('active');
         $('.nav-button.{0}'.format(name)).toggleClass('active');
+    },
+
+    smoothScrollElIntoView: function (el) {
+        console.log(el);
+        window.el = el;
+
+        console.log(el.outerHeight());
+        $('html, body').animate({
+            // TODO: Kinda hackish with the + 34, but it works for now.
+            scrollTop: (el.offset().top + el.outerHeight()) - window.innerHeight,
+        }, 1000);
     },
 };
 
@@ -45,16 +55,16 @@ $(document).ready(function () {
         $('body').toggleClass('page-scrolled', position > 20);
 
         // Select the correct navigation button.
-        var prayOnScreen = $('#pray').isOnScreen(),
-            aboutOnScreen = $('#about').isOnScreen(),
-            contactOnScreen = $('#contact').isOnScreen();
+        var prayOnScreen = $('#pray').isOnFullyScreen(),
+            featuresOnScreen = $('#features').isOnFullyScreen(),
+            inspirationOnScreen = $('#inspiration').isOnFullyScreen();
 
-        if (contactOnScreen) {
-            STW.setActiveNavItem('contact');
-        } else if (aboutOnScreen) {
-            STW.setActiveNavItem('about');
-        } else {
+        if (prayOnScreen && !featuresOnScreen || window.scrollY === 0) {
             STW.setActiveNavItem('pray');
+        } else if (featuresOnScreen && !inspirationOnScreen) {
+            STW.setActiveNavItem('features');
+        } else if (inspirationOnScreen) {
+            STW.setActiveNavItem('inspiration');
         }
     });
 
@@ -72,10 +82,7 @@ $(document).ready(function () {
                 var target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
                 if (target.length) {
-                    $('html, body').animate({
-                        scrollTop: target.offset().top,
-                    }, 1000);
-
+                    STW.smoothScrollElIntoView(target);
                     return false;
                 }
             }

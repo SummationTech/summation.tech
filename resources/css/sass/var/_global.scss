@@ -3,6 +3,7 @@ $black: rgb(0, 0, 0);
 $white: rgb(255, 255, 255);
 $red: rgb(220, 80, 80);
 $blue: rgb(50, 100, 200);
+$green: rgb(161, 212, 144);
 $base-color: lighten($black, 30%);
 $base-background-color: lighten($black, 95%);
 
@@ -32,6 +33,7 @@ $backup-font-family: Arial, sans-serif;
 $base-font-family: 'Open Sans Light', $backup-font-family;
 $base-bold-font-family: 'Open Sans Semibold', $backup-font-family;
 $base-header-font-family: 'Open Sans Semibold', $backup-font-family;
+$social-font-family: 'Font Awesome';
 $base-font-size: 13px;
 $base-font-weight: $regular;
 $base-line-height: 1.4;
