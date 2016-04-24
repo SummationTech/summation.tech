@@ -2,8 +2,8 @@ header {
     background-color: $base-background-color;
     box-shadow: 0 1px 7px lighten($black, 60%);
     box-sizing: border-box;
-    height: 140px;
-    line-height: 120px;
+    height: 120px;
+    line-height: 100px;
     padding: 10px 30px;
     position: fixed;
     top: 0;
@@ -14,11 +14,29 @@ header {
     z-index: 2;
 
     .logo {
-        font-family: $base-font-family;
         float: left;
-        font-size: $base-font-size * 5;
-        text-decoration: none;
-        transition: font 0.5s, line-height 0.5s;
+
+        a {
+            float: left;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            transition: all 0.5s;
+        }
+
+        h1 {
+            font-family: $base-font-family;
+            font-size: $base-font-size * 4;
+            text-decoration: none;
+            margin-left: 10px;
+            transition: all 0.5s;
+        }
+    }
+
+    .line-break {
+        display: none;
     }
 
     nav ul {
@@ -40,6 +58,7 @@ header {
         a {
             text-align: center;
             padding: 10px;
+            transition: padding 0.5s;
         }
 
         &.active a {
@@ -66,7 +85,18 @@ header {
         line-height: 60px;
 
         .logo {
-            font-size: $base-font-size * 2.5;
+            img {
+                width: 60px;
+                height: 60px;
+            }
+
+            h1 {
+                font-size: $base-font-size * 2.5;
+            }
+        }
+
+        nav ul li a {
+            padding: 5px;
         }
     }
 
@@ -78,22 +108,37 @@ header {
         text-align: center;
 
         .logo {
-            font-size: $base-font-size * 2.5;
-            text-align: center;
             float: none;
+            display: inline-block;
+            margin-bottom: -35px;
+
+            img {
+                float: none;
+                width: 45px;
+                height: 45px;
+            }
+
+            h1 {
+                font-size: $base-font-size * 2.5;
+                text-align: center;
+            }
+        }
+
+        .line-break {
+            display: inline;
         }
 
         nav {
             display: inline-block;
-        }
 
-        // Reduce the space between the menu items
-        nav ul {
-            float: none;
-            clear: both;
+            ul {
+                float: none;
+                clear: both;
 
-            li a {
-                padding: 5px;
+                // Reduce the space between the menu items
+                li a {
+                    padding: 5px;
+                }
             }
         }
     }

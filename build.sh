@@ -21,6 +21,9 @@ mkdir builds/resources
 echo "\nCopying Images"
 cp -vr resources/images builds/resources/images
 
+echo "\nCopying Favicons"
+cp -vr resources/favicons/* builds
+
 echo "\nCopying JavaScript Files"
 cp -vr resources/js builds/resources/js
 

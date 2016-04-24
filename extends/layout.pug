@@ -10,7 +10,32 @@ html(lang=en)
         // Meta
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        meta(name='description', content='Learn about Summation.Tech\'s incredible apps with compelling experiences on all your devices.')
+        meta(name='description', content='Learn about Summation.Tech\'s incredible Pray app for iPhone and iPad.')
+
+        link(rel='publisher', href='https://plus.google.com/102715382306772931161')
+
+        // ****** faviconit.com favicons ******
+        link(rel="shortcut icon", href="favicon.ico")
+        link(rel="icon", sizes="16x16 32x32 64x64", href="favicon.ico")
+        link(rel="icon", type="image/png", sizes="196x196", href="favicon-192.png")
+        link(rel="icon", type="image/png", sizes="160x160", href="favicon-160.png")
+        link(rel="icon", type="image/png", sizes="96x96", href="favicon-96.png")
+        link(rel="icon", type="image/png", sizes="64x64", href="favicon-64.png")
+        link(rel="icon", type="image/png", sizes="32x32", href="favicon-32.png")
+        link(rel="icon", type="image/png", sizes="16x16", href="favicon-16.png")
+        link(rel="apple-touch-icon", href="favicon-57.png")
+        link(rel="apple-touch-icon", sizes="114x114", href="favicon-114.png")
+        link(rel="apple-touch-icon", sizes="72x72", href="favicon-72.png")
+        link(rel="apple-touch-icon", sizes="144x144", href="favicon-144.png")
+        link(rel="apple-touch-icon", sizes="60x60", href="favicon-60.png")
+        link(rel="apple-touch-icon", sizes="120x120", href="favicon-120.png")
+        link(rel="apple-touch-icon", sizes="76x76", href="favicon-76.png")
+        link(rel="apple-touch-icon", sizes="152x152", href="favicon-152.png")
+        link(rel="apple-touch-icon", sizes="180x180", href="favicon-180.png")
+        meta(name="msapplication-TileColor", content="#FFFFFF")
+        meta(name="msapplication-TileImage", content="favicon-144.png")
+        meta(name="msapplication-config", content="browserconfig.xml")
+        // ****** faviconit.com favicons ******
 
         // Stylesheet
         link(rel='stylesheet', href='resources/css/app.css' media='screen, projection', type='text/css')
@@ -19,13 +44,27 @@ html(lang=en)
         script(type='text/javascript', src='resources/js/jquery-2.2.1.min.js')
         script(type='text/javascript', src='resources/js/app.js')
 
+        // Google Analytics
+        script.
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-76784579-1', 'auto');
+            ga('send', 'pageview');
+
+</script>
+
     body
         #top
         header
             .content-wrapper
                 - function getHref(anchor) { return !anchor ? '#' : '#' + anchor; }
-                h1.logo
-                    a(href=getHref('top')) Summation.Tech
+                div.logo
+                    a(href=getHref('top')): img(src='resources/images/header-logo.png')
+                    a(href=getHref('top')): h1 Summation.Tech
+                br.line-break
                 nav: ul
                     li(class='active nav-button pray')
                         a(href=getHref('top')) Pray App
@@ -41,6 +80,6 @@ html(lang=en)
         footer
             .content-wrapper
                 .social-media
-                    a.social-icon.fa.fa-facebook(href='http://www.facebook.com')
+                    a.social-icon.fa.fa-facebook(href='http://www.facebook.com/PrayBySummationTech')
                     a.social-icon.fa.fa-twitter(href='http://www.twitter.com')
                 p Copyright &copy; <span class='copyright-year'>2016</span> Summation.Tech. All Rights Reserved.

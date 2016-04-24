@@ -57,7 +57,7 @@ var STW = {
 
     smoothScrollElIntoView: function(el) {
         var headerHeight = $('header').outerHeight(),
-            offsetForHeaderHeightChange = headerHeight === 140 ? 60 : 0,
+            offsetForHeaderHeightChange = headerHeight === 120 ? 40 : 0,
             scrollLocation = (el.offset().top + el.outerHeight()) - window.innerHeight - offsetForHeaderHeightChange;
 
         if ((window.innerHeight - headerHeight) < el.outerHeight()) {
