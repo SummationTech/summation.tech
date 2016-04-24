@@ -1,4 +1,4 @@
-String.prototype.format = function () {
+String.prototype.format = function() {
     var formattedString = this;
     for (var i = 0; i < arguments.length; i++) {
         var reg = new RegExp('\\{' + i + '\\}', 'gm');
@@ -9,7 +9,24 @@ String.prototype.format = function () {
 };
 
 // http://stackoverflow.com/questions/20644029/checking-if-a-div-is-visible-within-viewport-using-jquery
-$.fn.isOnFullyScreen = function() {
+$.fn.isOnScreen = function() {
+    var win = $(window);
+
+    var viewport = {
+        top: win.scrollTop() + $('header').outerHeight(),
+        left: win.scrollLeft(),
+    };
+    viewport.right = viewport.left + win.width();
+    viewport.bottom = viewport.top + win.height() - $('header').height();
+
+    var bounds = this.offset();
+    bounds.right = bounds.left + this.outerWidth(true);
+    bounds.bottom = bounds.top + this.outerHeight(true);
+
+    return (!(viewport.right <= bounds.left || viewport.left >= bounds.right || viewport.bottom <= bounds.top || viewport.top >= bounds.bottom));
+};
+
+$.fn.isFullyOnScreen = function() {
     var win = $(window);
 
     var viewport = {
@@ -20,52 +37,87 @@ $.fn.isOnFullyScreen = function() {
     viewport.bottom = viewport.top + win.height();
 
     var bounds = this.offset();
-    bounds.right = bounds.left + this.outerWidth();
-    bounds.bottom = bounds.top + this.outerHeight();
+    bounds.right = bounds.left + this.outerWidth(true);
+    bounds.bottom = bounds.top + this.outerHeight(true);
 
     return (bounds.right <= viewport.right && bounds.left >= viewport.left && bounds.top >= viewport.top && bounds.bottom <= viewport.bottom);
 };
 
 var STW = {
     activeItem: 'pray',
-    setActiveNavItem: function (name) {
-        if (this.activeItem === name) { return; }
+    _doSetActiveNavItem: function(name) {
+        if (this.activeItem === name) {
+            return;
+        }
 
         this.activeItem = name;
         $('.nav-button').removeClass('active');
         $('.nav-button.{0}'.format(name)).toggleClass('active');
     },
 
-    smoothScrollElIntoView: function (el) {
-        console.log(el);
-        window.el = el;
+    smoothScrollElIntoView: function(el) {
+        var headerHeight = $('header').outerHeight(),
+            offsetForHeaderHeightChange = headerHeight === 140 ? 60 : 0,
+            scrollLocation = (el.offset().top + el.outerHeight()) - window.innerHeight - offsetForHeaderHeightChange;
 
-        console.log(el.outerHeight());
+        if ((window.innerHeight - headerHeight) < el.outerHeight()) {
+            scrollLocation = el.offset().top - headerHeight;
+        }
+
         $('html, body').animate({
-            // TODO: Kinda hackish with the + 34, but it works for now.
-            scrollTop: (el.offset().top + el.outerHeight()) - window.innerHeight,
+            scrollTop: scrollLocation,
         }, 1000);
+    },
+
+    setActiveNavItem: function() {
+        // Select the correct navigation button.
+        var prayDiv = $('#pray'),
+            featuresDiv = $('#features'),
+            inspirationDiv = $('#inspiration'),
+
+            prayOnScreen = prayDiv.isOnScreen(),
+            featuresOnScreen = featuresDiv.isOnScreen(),
+            inspirationOnScreen = inspirationDiv.isOnScreen(),
+
+            prayFullyOnScreen = prayDiv.isFullyOnScreen(),
+            featuresFullyOnScreen = featuresDiv.isFullyOnScreen(),
+            inspirationFullyOnScreen = inspirationDiv.isFullyOnScreen(),
+
+            itemToActivate;
+
+        if (prayFullyOnScreen && !featuresFullyOnScreen && !inspirationFullyOnScreen) {
+            itemToActivate = 'pray';
+        } else if (featuresFullyOnScreen && !prayFullyOnScreen && !inspirationFullyOnScreen) {
+            itemToActivate = 'features';
+        } else if (inspirationFullyOnScreen) {
+            itemToActivate = 'inspiration';
+        } else if (prayOnScreen && !featuresOnScreen && !inspirationOnScreen) {
+            itemToActivate = 'pray';
+        } else if (featuresOnScreen && !prayOnScreen && !inspirationOnScreen) {
+            itemToActivate = 'features';
+        } else if (inspirationOnScreen && !prayOnScreen && !featuresOnScreen) {
+            itemToActivate = 'inspiration';
+        } else if (prayOnScreen && !featuresFullyOnScreen && !inspirationOnScreen) {
+            itemToActivate = 'pray';
+        } else if (featuresOnScreen && !prayFullyOnScreen && !inspirationFullyOnScreen) {
+            itemToActivate = 'features';
+        } else if (inspirationOnScreen && !prayFullyOnScreen && !featuresFullyOnScreen) {
+            itemToActivate = 'inspiration';
+        } else if (featuresOnScreen && inspirationOnScreen) {
+            itemToActivate = 'features';
+        }
+
+        this._doSetActiveNavItem(itemToActivate);
     },
 };
 
-$(document).ready(function () {
-    // Collapse the header when the user scrolls down the page.
-    $(window).scroll(function () {
+$(document).ready(function() {
+    $(window).scroll(function() {
+        // Collapse the header when the user scrolls down the page.
         var position = $(window).scrollTop();
         $('body').toggleClass('page-scrolled', position > 20);
 
-        // Select the correct navigation button.
-        var prayOnScreen = $('#pray').isOnFullyScreen(),
-            featuresOnScreen = $('#features').isOnFullyScreen(),
-            inspirationOnScreen = $('#inspiration').isOnFullyScreen();
-
-        if (prayOnScreen && !featuresOnScreen || window.scrollY === 0) {
-            STW.setActiveNavItem('pray');
-        } else if (featuresOnScreen && !inspirationOnScreen) {
-            STW.setActiveNavItem('features');
-        } else if (inspirationOnScreen) {
-            STW.setActiveNavItem('inspiration');
-        }
+        STW.setActiveNavItem();
     });
 
     // Automatically insert the correct copyright date.
@@ -75,12 +127,12 @@ $(document).ready(function () {
         $('.copyright-year').text('2016 - {0}'.format(now.getFullYear()));
     }
 
-    // Smooth Scrolling
+    // Smooth Scrolling to anchors
     $(function() {
         $('a[href*="#"]:not([href="#"])').click(function() {
-            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
                 var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
                 if (target.length) {
                     STW.smoothScrollElIntoView(target);
                     return false;
