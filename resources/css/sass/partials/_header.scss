@@ -84,6 +84,9 @@ header {
         height: 80px;
         line-height: 60px;
 
+        padding-right: 20px;
+        padding-left: 20px;
+
         .logo {
             img {
                 width: 60px;
@@ -144,6 +147,10 @@ header {
     }
 
     @include respond-to(handhelds) {
+        .logo h1 {
+            font-size: $base-font-size * 2;
+        }
+
         nav ul li {
             a {
                 padding: 7px 3px;
@@ -166,7 +173,14 @@ header {
             line-height: 60px;
 
             .logo {
-                font-size: $base-font-size * 2.5;
+                img {
+                    width: 60px;
+                    height: 60px;
+                }
+    
+                h1 {
+                    font-size: $base-font-size * 2.5;
+                }
             }
         }
     }
