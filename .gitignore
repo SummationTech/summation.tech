@@ -1,5 +1,6 @@
 builds
 resources/css/app.css
+resources/css/font-awesome
 *.sass-cache
 *.sublime-*
 *.html
