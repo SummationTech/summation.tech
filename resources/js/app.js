@@ -117,7 +117,9 @@ $(document).ready(function() {
         var position = $(window).scrollTop();
         $('body').toggleClass('page-scrolled', position > 20);
 
-        STW.setActiveNavItem();
+        setTimeout(function() {
+            STW.setActiveNavItem();
+        }, 100);
     });
 
     // Automatically insert the correct copyright date.
@@ -130,7 +132,9 @@ $(document).ready(function() {
     // Smooth Scrolling to anchors
     $(function() {
         $('a[href*="#"]:not([href="#"])').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') &&
+                location.hostname === this.hostname) {
+
                 var target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
                 if (target.length) {

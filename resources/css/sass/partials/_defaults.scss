@@ -11,6 +11,9 @@ body {
     font-size: $base-font-size;
     font-weight: $base-font-weight;
     line-height: $base-line-height;
+
+    position: relative;
+    margin-bottom: $footer-height;
 }
 
 h1,

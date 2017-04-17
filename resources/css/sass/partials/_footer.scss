@@ -1,7 +1,16 @@
 footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .content-wrapper {
+        margin-top: 20px;
+    }
+
+    height: $footer-height;
     background-color: lighten($black, 35%);
     color: lighten($black, 70%);
-    padding: 25px;
     text-align: center;
     font-size: $base-font-size * 0.8;
 
